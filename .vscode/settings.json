@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "gpio.h": "c",
+        "spi.h": "c",
+        "stdint.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "sd_card.h": "c",
+        "fatfs.h": "c",
+        "rcc.h": "c",
+        "common.h": "c",
+        "spi_config.h": "c"
+    }
+}
