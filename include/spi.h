@@ -19,11 +19,10 @@
 #ifndef __SPI_H__
 #define __SPI_H__
 #include "stm32f4xx_hal.h"
-#include "spi_config.h"
 
 extern SPI_HandleTypeDef hspi1;
 
-void SPI1_Init(void);
+void SD_SpiInit(void);
 
 #endif
 

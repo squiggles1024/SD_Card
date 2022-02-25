@@ -8,6 +8,7 @@
         "fatfs.h": "c",
         "rcc.h": "c",
         "common.h": "c",
-        "spi_config.h": "c"
+        "spi_config.h": "c",
+        "sd_hardware.h": "c"
     }
 }

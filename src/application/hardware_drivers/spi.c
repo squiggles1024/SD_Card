@@ -22,7 +22,6 @@
 #include "common.h"
 #include "spi.h"
 #include "sd_hardware.h"
-#include "spi_config.h"
 
 /******************************************************************************
 * Public Global Variables
@@ -32,6 +31,28 @@ SPI_HandleTypeDef hspi1;
 /******************************************************************************
 * Public Function Definitions
 *******************************************************************************/
+
+void SD_SpiInit(void){
+
+  SD_SPI_CLK_ENABLE();
+  SD_SPI_HANDLE.Instance = SD_SPI_PERIPHERAL;
+  SD_SPI_HANDLE.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
+  SD_SPI_HANDLE.Init.CLKPhase = SPI_PHASE_2EDGE;
+  SD_SPI_HANDLE.Init.CLKPolarity = SPI_POLARITY_HIGH;
+  SD_SPI_HANDLE.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+  SD_SPI_HANDLE.Init.CRCPolynomial = 0x7;
+  SD_SPI_HANDLE.Init.DataSize = SPI_DATASIZE_8BIT;
+  SD_SPI_HANDLE.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  SD_SPI_HANDLE.Init.Mode = SPI_MODE_MASTER;
+  SD_SPI_HANDLE.Init.NSS = SPI_NSS_SOFT;
+  SD_SPI_HANDLE.Init.TIMode = SPI_TIMODE_DISABLED;
+  
+  /*Intialized SPI Peripheral*/
+  if (HAL_SPI_Init(&SD_SPI_HANDLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
 
 /*******************************************************************************
   * @brief  Initializes low level hardware required for SPI peripheral (GPIO, Clocks)
