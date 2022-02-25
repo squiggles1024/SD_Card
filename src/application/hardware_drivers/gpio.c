@@ -43,13 +43,9 @@ void GPIO_Init(void)
   };
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   HAL_GPIO_Init(LED_GPIO_PORT, &LED_InitStruct);
   
 }
 
-/* USER CODE BEGIN 2 */
-
-/* USER CODE END 2 */
