@@ -4,8 +4,10 @@
 * Includes
 *******************************************************************************/
 #include <stdint.h>
-#include "spi.h"
+#include "stm32f4xx_hal.h"
 #include "common.h"
+
+extern SPI_HandleTypeDef sdspi;
 
 /******************************************************************************
 * Hardware Defines: Change these to port to another STM32F4 Project
@@ -29,12 +31,12 @@
 #define SD_CSN_GPIO_CLK_DISABLE() __HAL_RCC_GPIOA_CLK_DISABLE()
 #define SD_SPI_CLK_DISABLE()      __HAL_RCC_SPI1_CLK_DISABLE()
 #define SD_BAUD_PRESCALER         SPI_BAUDRATEPRESCALER_8
-#define SD_SPI_HANDLE             hspi1
+#define SD_SPI_HANDLE             sdspi
 #define SPI_TIMEOUT               (1000U)
 
-/******************************************************************************
-* Public Hardware Functions: These functions directly manipulate hardware registers
-*******************************************************************************/
+/**********************************************************************************
+* Public Hardware Functions: Used to link to the FATFS Middleware
+***********************************************************************************/
 void    SD_IO_Init(void);
 void    SD_IO_CSState(uint8_t state);
 void    SD_IO_WriteReadData(const uint8_t *DataIn, uint8_t *DataOut, uint16_t DataLength);
